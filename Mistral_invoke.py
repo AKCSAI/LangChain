@@ -1,10 +1,12 @@
 # Import the class for defining Hugging Face pipelines
 from langchain_huggingface import HuggingFacePipeline
+from transformers import pipeline  # <-- Add this import
 
 # Define the LLM from the Hugging Face model ID
 llm = HuggingFacePipeline.from_model_id(
     model_id="crumb/nano-mistral",
     task="text-generation",
+    pipeline=pipeline,  # <-- Pass the pipeline constructor
     pipeline_kwargs={"max_new_tokens": 20}
 )
 
